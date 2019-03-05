@@ -45,15 +45,20 @@ namespace CourseGrader
                     testResult = "fail";
                 }
             }
-            average = total / testScores.Length;
-            if (average >= 70 && testResult != "fail")
+            if (testScores.Length != 0)
             {
-                testResult = "pass";
+                average = total / testScores.Length;
+                if (average >= 70 && testResult != "fail")
+                {
+                    testResult = "pass";
+                }
+                else if (average < 70 || testResult == "fail")
+                {
+                    testResult = "fail";
+                }
             }
-            else if (average <70 || testResult == "fail")
-            {
+            else
                 testResult = "fail";
-            }
 
             return testResult;
         }
